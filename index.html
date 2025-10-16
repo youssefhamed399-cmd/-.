@@ -6,7 +6,6 @@
     <title>هدية عيد ميلادك</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* تنسيقات عامة */
         * {
             margin: 0;
             padding: 0;
@@ -68,7 +67,6 @@
             font-size: 18px;
         }
         
-        /* أنيميشن للصفحات */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -106,7 +104,12 @@
             100% { box-shadow: 0 0 10px var(--primary); }
         }
         
-        /* صفحة الباسورد */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+        
         #password-page {
             display: flex;
         }
@@ -156,7 +159,54 @@
             margin-top: 5px;
         }
         
-        /* صفحة الذكريات */
+        .password-form {
+            margin: 30px 0;
+        }
+        
+        .password-input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 18px;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            text-align: center;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .password-input:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(255, 107, 139, 0.5);
+        }
+        
+        .password-btn {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .password-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+        }
+        
+        .error-message {
+            color: #ff3333;
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+            animation: shake 0.5s ease;
+        }
+        
         .countup {
             display: flex;
             justify-content: center;
@@ -229,7 +279,6 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
         
-        /* صفحة المعايدة */
         .birthday-title {
             color: var(--primary);
             font-size: 42px;
@@ -271,7 +320,6 @@
             text-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        /* أزرار التنقل */
         .nav-buttons {
             display: flex;
             justify-content: center;
@@ -304,7 +352,6 @@
             font-size: 20px;
         }
         
-        /* تأثيرات إضافية */
         .floating-heart {
             position: absolute;
             font-size: 24px;
@@ -367,7 +414,6 @@
             color: var(--primary);
         }
         
-        /* تأثيرات النص */
         .romantic-text {
             font-size: 20px;
             line-height: 1.8;
@@ -383,7 +429,6 @@
             font-weight: bold;
         }
         
-        /* تصميم متجاوب */
         @media (max-width: 768px) {
             .countdown, .countup {
                 gap: 10px;
@@ -421,7 +466,6 @@
             }
         }
         
-        /* فيديو اليوتيوب */
         .video-container {
             margin: 30px 0;
             border-radius: 15px;
@@ -447,7 +491,7 @@
         <div class="container">
             <div class="lock">🔒</div>
             <h1>هدية عيد الميلاد الخاصة</h1>
-            <p class="romantic-text">تفتح الهدية بعد انتهاء المدة</p>
+            <p class="romantic-text">تفتح الهدية بعد انتهاء المدة أو بإدخال الباسورد</p>
             
             <div class="countdown">
                 <div class="countdown-item">
@@ -468,9 +512,11 @@
                 </div>
             </div>
             
-            <div class="nav-buttons">
-                <button class="nav-btn" onclick="showPage('memories-page')">
-                    <i class="fas fa-gift"></i> افتح الهدية الآن
+            <div class="password-form">
+                <input type="password" class="password-input" id="password-input" placeholder="أدخل الباسورد هنا...">
+                <div class="error-message" id="error-message">الباسورد غير صحيح! حاول مرة أخرى.</div>
+                <button class="password-btn" onclick="checkPassword()">
+                    <i class="fas fa-key"></i> فتح الهدية
                 </button>
             </div>
         </div>
@@ -590,44 +636,4 @@
         
         musicControl.addEventListener('click', function() {
             if (isPlaying) {
-                player.pauseVideo();
-                musicIcon.classList.remove('fa-pause');
-                musicIcon.classList.add('fa-play');
-            } else {
-                player.playVideo();
-                musicIcon.classList.remove('fa-play');
-                musicIcon.classList.add('fa-pause');
-            }
-            
-            isPlaying = !isPlaying;
-        });
-        
-        // عرض الصفحات
-        function showPage(pageId) {
-            document.getElementById('password-page').style.display = 'none';
-            document.getElementById('memories-page').style.display = 'none';
-            document.getElementById('birthday-page').style.display = 'none';
-            
-            document.getElementById(pageId).style.display = 'flex';
-            
-            // تشغيل الفيديو تلقائياً عند الوصول لصفحة المعايدة
-            if (pageId === 'birthday-page') {
-                setTimeout(() => {
-                    player.playVideo();
-                    musicIcon.classList.remove('fa-play');
-                    musicIcon.classList.add('fa-pause');
-                    isPlaying = true;
-                    createHearts();
-                    createConfetti();
-                    createBubbles();
-                }, 1000);
-            }
-        }
-        
-        // تحديث العداد التنازلي
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-            
-            if (distance > 0) {
-                const days = Math.floor(distance / (1000
+                player.pause
