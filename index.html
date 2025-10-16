@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عيد ميلاد سعيد يا حبيبتي</title>
+    <title>هدية عيد ميلادك</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* تنسيقات عامة */
@@ -31,23 +31,28 @@
             min-height: 100vh;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
         .page {
-            display: none;
             min-height: 100vh;
             padding: 50px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         
-        .active {
-            display: block;
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            padding: 50px 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+            border: 2px solid var(--primary);
             animation: fadeIn 1.5s ease;
         }
         
@@ -101,49 +106,13 @@
             100% { box-shadow: 0 0 10px var(--primary); }
         }
         
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
         /* صفحة الباسورد */
         #password-page {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
         }
         
-        .lock-container {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 25px;
-            padding: 50px 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            max-width: 600px;
-            width: 100%;
-            animation: pulse 3s infinite, glow 4s infinite;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid var(--primary);
-        }
-        
-        .lock-container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            transform: rotate(45deg);
-            animation: shine 5s infinite;
-        }
-        
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        #memories-page, #birthday-page {
+            display: none;
         }
         
         .lock {
@@ -188,25 +157,6 @@
         }
         
         /* صفحة الذكريات */
-        #memories-page {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .memories-content {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 25px;
-            padding: 50px 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            border: 2px solid var(--accent);
-        }
-        
         .countup {
             display: flex;
             justify-content: center;
@@ -280,29 +230,6 @@
         }
         
         /* صفحة المعايدة */
-        #birthday-page {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .birthday-content {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 25px;
-            padding: 50px 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-            border: 2px solid var(--secondary);
-        }
-        
         .birthday-title {
             color: var(--primary);
             font-size: 42px;
@@ -488,6 +415,24 @@
                 padding: 12px 25px;
                 font-size: 16px;
             }
+            
+            .container {
+                padding: 30px 20px;
+            }
+        }
+        
+        /* فيديو اليوتيوب */
+        .video-container {
+            margin: 30px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .video-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
         }
     </style>
 </head>
@@ -498,39 +443,35 @@
     </div>
     
     <!-- صفحة الباسورد -->
-    <div id="password-page" class="page active">
+    <div id="password-page" class="page">
         <div class="container">
-            <div class="lock-container">
-                <div class="lock">🔒</div>
-                <h1>هدية عيد الميلاد الخاصة</h1>
-                <p class="romantic-text">قلبي ينتظر هذه اللحظة منذ وقت طويل، عندما أتمكن أخيراً من فتح قلبي لكِ في يوم ميلادكِ</p>
-                
-                <div class="countdown">
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="days">00</div>
-                        <div class="countdown-label">أيام</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="hours">00</div>
-                        <div class="countdown-label">ساعات</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="minutes">00</div>
-                        <div class="countdown-label">دقائق</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="seconds">00</div>
-                        <div class="countdown-label">ثواني</div>
-                    </div>
+            <div class="lock">🔒</div>
+            <h1>هدية عيد الميلاد الخاصة</h1>
+            <p class="romantic-text">تفتح الهدية بعد انتهاء المدة</p>
+            
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">أيام</div>
                 </div>
-                
-                <p class="romantic-text">كل ثانية تقربني منكِ أكثر، وكل لحظة بعيداً عنكِ تطول كالدهر</p>
-                
-                <div class="nav-buttons">
-                    <button class="nav-btn" onclick="showPage('memories-page')">
-                        <i class="fas fa-gift"></i> افتح الهدية الآن
-                    </button>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">ساعات</div>
                 </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">دقائق</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">ثواني</div>
+                </div>
+            </div>
+            
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="showPage('memories-page')">
+                    <i class="fas fa-gift"></i> افتح الهدية الآن
+                </button>
             </div>
         </div>
     </div>
@@ -538,50 +479,46 @@
     <!-- صفحة الذكريات -->
     <div id="memories-page" class="page">
         <div class="container">
-            <div class="memories-content">
-                <h1>رحلة حبنا الجميلة</h1>
-                <p class="romantic-text">منذ ذلك اليوم الذي التقينا فيه، <span class="highlight">أصبح للحياة معنى جديد</span>، وأصبح للقلب بيت يستقر فيه</p>
-                <p class="romantic-text">كل لحظة قضيناها معاً هي كنز لا يقدر بثمن، وكل ذكرى صنعناها معاً هي جوهرة في تاج حياتي</p>
-                
-                <div class="countup">
-                    <div class="countup-item">
-                        <div class="countup-number" id="countup-days">00</div>
-                        <div class="countup-label">أيام</div>
-                    </div>
-                    <div class="countup-item">
-                        <div class="countup-number" id="countup-hours">00</div>
-                        <div class="countup-label">ساعات</div>
-                    </div>
-                    <div class="countup-item">
-                        <div class="countup-number" id="countup-minutes">00</div>
-                        <div class="countup-label">دقائق</div>
-                    </div>
+            <h1>رحلة حبنا</h1>
+            <p class="romantic-text">كل لحظة قضيناها معاً هي كنز لا يقدر بثمن، وكل ذكرى صنعناها معاً هي جوهرة في تاج حياتنا.</p>
+            <p class="romantic-text">منذ ذلك اليوم، تغير كل شيء، أصبح للحياة معنى جديد، وأصبح للقلب بيت يستقر فيه.</p>
+            
+            <div class="countup">
+                <div class="countup-item">
+                    <div class="countup-number" id="countup-days">00</div>
+                    <div class="countup-label">أيام</div>
                 </div>
-                
-                <div class="forever-text">To Eternity Together ❤️</div>
-                
-                <p class="romantic-text">هذه الأيام الجميلة التي قضيناها معاً هي مجرد بداية لرحلة <span class="highlight">حب لا تنتهي</span></p>
-                
-                <div class="photo-gallery">
-                    <div class="photo-placeholder">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <div class="photo-placeholder">
-                        <i class="fas fa-kiss-wink-heart"></i>
-                    </div>
-                    <div class="photo-placeholder">
-                        <i class="fas fa-images"></i>
-                    </div>
+                <div class="countup-item">
+                    <div class="countup-number" id="countup-hours">00</div>
+                    <div class="countup-label">ساعات</div>
                 </div>
-                
-                <div class="nav-buttons">
-                    <button class="nav-btn" onclick="showPage('password-page')">
-                        <i class="fas fa-arrow-right"></i> العودة
-                    </button>
-                    <button class="nav-btn" onclick="showPage('birthday-page')">
-                        <i class="fas fa-birthday-cake"></i> معايدة خاصة
-                    </button>
+                <div class="countup-item">
+                    <div class="countup-number" id="countup-minutes">00</div>
+                    <div class="countup-label">دقائق</div>
                 </div>
+            </div>
+            
+            <div class="forever-text">To Eternity Together</div>
+            
+            <div class="photo-gallery">
+                <div class="photo-placeholder">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="photo-placeholder">
+                    <i class="fas fa-kiss-wink-heart"></i>
+                </div>
+                <div class="photo-placeholder">
+                    <i class="fas fa-images"></i>
+                </div>
+            </div>
+            
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="showPage('password-page')">
+                    <i class="fas fa-arrow-right"></i> العودة
+                </button>
+                <button class="nav-btn" onclick="showPage('birthday-page')">
+                    <i class="fas fa-birthday-cake"></i> معايدة خاصة
+                </button>
             </div>
         </div>
     </div>
@@ -589,34 +526,108 @@
     <!-- صفحة المعايدة -->
     <div id="birthday-page" class="page">
         <div class="container">
-            <div class="birthday-content">
-                <h1 class="birthday-title">عيد ميلاد سعيد يا حبيبتي!</h1>
-                <div class="cake">🎂</div>
-                
-                <div class="birthday-message">
-                    <p>في يوم ميلادكِ، أتمنى لكِ سنة مليئة بالفرح والحب والنجاح.</p>
-                    <p>أنتِ نور حياتي وسبب سعادتي، أتمنى أن تظل ابتسامتكِ تزين وجهكِ الجميل إلى الأبد.</p>
-                    <p>كل عام وأنتِ أغلى ما في حياتي، وأجمل ما في قلبي، وأعظم هدية منحني إياها القدر.</p>
-                    <p>أحبكِ أكثر من أي كلمة يمكن أن تعبر، وأكثر من أي شعور يمكن أن يوصف.</p>
-                    <p>عيد ميلاد سعيد يا حبيبة قلبي!</p>
-                </div>
-                
-                <div class="nav-buttons">
-                    <button class="nav-btn" onclick="showPage('memories-page')">
-                        <i class="fas fa-arrow-right"></i> العودة
-                    </button>
-                    <button class="nav-btn" onclick="showPage('password-page')">
-                        <i class="fas fa-redo"></i> إعادة
-                    </button>
-                </div>
+            <h1 class="birthday-title">عيد ميلاد سعيد يا حبيبتي!</h1>
+            <div class="cake">🎂</div>
+            
+            <div class="birthday-message">
+                <p>في يوم ميلادك، أتمنى لكِ سنة مليئة بالفرح والحب والنجاح.</p>
+                <p>أنتِ نور حياتي وسبب سعادتي، أتمنى أن تظل ابتسامتك تزين وجهك الجميل إلى الأبد.</p>
+                <p>كل عام وأنتِ أغلى ما في حياتي، وأجمل ما في قلبي، وأعظم هدية منحني إياها القدر.</p>
+                <p>عيد ميلاد سعيد يا حبيبة قلبي!</p>
+            </div>
+            
+            <div class="video-container">
+                <iframe id="youtube-video" src="https://www.youtube.com/embed/wNut8QshEx0?enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="showPage('memories-page')">
+                    <i class="fas fa-arrow-right"></i> العودة
+                </button>
+                <button class="nav-btn" onclick="showPage('password-page')">
+                    <i class="fas fa-redo"></i> إعادة
+                </button>
             </div>
         </div>
         
         <div class="hearts" id="hearts-container"></div>
     </div>
     
-    <!-- عنصر الفيديو (سيتم تشغيله كخلفية صوتية) -->
-    <iframe id="youtube-audio" style="display:none" src="https://www.youtube.com/embed/wNut8QshEx0?autoplay=1&loop=1&playlist=wNut8QshEx0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-    
     <script>
-        // تاريخ الهدف للعداد ا
+        // تاريخ الهدف للعداد التنازلي (9 فبراير 2026)
+        const countdownDate = new Date('February 9, 2026 00:00:00').getTime();
+        
+        // تاريخ البداية للعداد التصاعدي (1 مارس 2025)
+        const countupDate = new Date('March 1, 2025 00:00:00').getTime();
+        
+        // متغير للتحكم بالموسيقى
+        let player;
+        
+        // تحميل API اليوتيوب
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        
+        // إنشاء مشغل اليوتيوب
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-video', {
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+        
+        // عندما يكون المشغل جاهزاً
+        function onPlayerReady(event) {
+            // يمكننا تشغيل الفيديو تلقائياً عندما يصل المستخدم للصفحة الثالثة
+        }
+        
+        // التحكم بالموسيقى
+        const musicControl = document.getElementById('music-control');
+        const musicIcon = document.getElementById('music-icon');
+        let isPlaying = false;
+        
+        musicControl.addEventListener('click', function() {
+            if (isPlaying) {
+                player.pauseVideo();
+                musicIcon.classList.remove('fa-pause');
+                musicIcon.classList.add('fa-play');
+            } else {
+                player.playVideo();
+                musicIcon.classList.remove('fa-play');
+                musicIcon.classList.add('fa-pause');
+            }
+            
+            isPlaying = !isPlaying;
+        });
+        
+        // عرض الصفحات
+        function showPage(pageId) {
+            document.getElementById('password-page').style.display = 'none';
+            document.getElementById('memories-page').style.display = 'none';
+            document.getElementById('birthday-page').style.display = 'none';
+            
+            document.getElementById(pageId).style.display = 'flex';
+            
+            // تشغيل الفيديو تلقائياً عند الوصول لصفحة المعايدة
+            if (pageId === 'birthday-page') {
+                setTimeout(() => {
+                    player.playVideo();
+                    musicIcon.classList.remove('fa-play');
+                    musicIcon.classList.add('fa-pause');
+                    isPlaying = true;
+                    createHearts();
+                    createConfetti();
+                    createBubbles();
+                }, 1000);
+            }
+        }
+        
+        // تحديث العداد التنازلي
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+            
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000
