@@ -121,11 +121,20 @@
             50% { transform: scale(1.1); }
         }
 
-        .next-btn {
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 2s forwards;
+        }
+
+        .btn {
             background: linear-gradient(135deg, #ff0000, #cc0000);
             color: white;
             border: none;
-            padding: 15px 40px;
+            padding: 15px 30px;
             border-radius: 25px;
             font-size: 16px;
             font-weight: bold;
@@ -133,15 +142,22 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 2s forwards;
             box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+            min-width: 150px;
         }
 
-        .next-btn:hover {
+        .btn:hover {
             background: linear-gradient(135deg, #ff3333, #ff0000);
             box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
             transform: translateY(-2px);
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #666666, #444444);
+        }
+
+        .btn-back:hover {
+            background: linear-gradient(135deg, #888888, #666666);
         }
 
         /* تأثيرات الجسيمات */
@@ -184,6 +200,16 @@
             .message {
                 font-size: 18px;
             }
+            
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -208,19 +234,19 @@
         <div class="counter-container">
             <div class="time-unit">
                 <div class="time-number" id="days">000</div>
-                <div class="time-label">أيام</div>
+                <div class="time-label">DAYS</div>
             </div>
             <div class="time-unit">
                 <div class="time-number" id="hours">00</div>
-                <div class="time-label">ساعات</div>
+                <div class="time-label">HOURS</div>
             </div>
             <div class="time-unit">
                 <div class="time-number" id="minutes">00</div>
-                <div class="time-label">دقائق</div>
+                <div class="time-label">MINUTES</div>
             </div>
             <div class="time-unit">
                 <div class="time-number" id="seconds">00</div>
-                <div class="time-label">ثواني</div>
+                <div class="time-label">SECONDS</div>
             </div>
         </div>
 
@@ -228,7 +254,11 @@
             ✨ Our time together isn't just memories — it's the story I'll keep forever
         </div>
 
-        <a href="gallery.html" class="next-btn">الذكريات التالية 📸</a>
+        <div class="buttons-container">
+            <a href="main.html" class="btn btn-back">⬅️ Back</a>
+            <a href="gallery.html" class="btn">Next Memories 📸</a>
+            <a href="surprise.html" class="btn">Final Surprise 🎁</a>
+        </div>
     </div>
 
     <script>
@@ -276,4 +306,4 @@
         });
     </script>
 </body>
-  </html>
+</html>
