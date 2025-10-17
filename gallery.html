@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رسالة إلى أعظم هدية 💝</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
+            position: relative;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        /* تأثيرات الخلفية */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 0, 0, 0.05) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .header {
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        .header-icons {
+            font-size: 50px;
+            margin-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header-title {
+            font-size: 24px;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .video-container {
+            margin: 30px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+
+        .video-frame {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .message-container {
+            background: rgba(20, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            text-align: right;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.5s forwards;
+        }
+
+        .message-paragraph {
+            margin-bottom: 25px;
+            font-size: 18px;
+            color: #ffffff;
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        .message-paragraph:nth-child(1) { animation: slideInRight 0.8s ease-out 2s forwards; }
+        .message-paragraph:nth-child(2) { animation: slideInRight 0.8s ease-out 2.3s forwards; }
+        .message-paragraph:nth-child(3) { animation: slideInRight 0.8s ease-out 2.6s forwards; }
+        .message-paragraph:nth-child(4) { animation: slideInRight 0.8s ease-out 2.9s forwards; }
+        .message-paragraph:nth-child(5) { animation: slideInRight 0.8s ease-out 3.2s forwards; }
+        .message-paragraph:nth-child(6) { animation: slideInRight 0.8s ease-out 3.5s forwards; }
+        .message-paragraph:nth-child(7) { animation: slideInRight 0.8s ease-out 3.8s forwards; }
+        .message-paragraph:nth-child(8) { animation: slideInRight 0.8s ease-out 4.1s forwards; }
+        .message-paragraph:nth-child(9) { animation: slideInRight 0.8s ease-out 4.4s forwards; }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .heart {
+            color: #ff0000;
+            font-size: 24px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 5s forwards;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+            min-width: 150px;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #ff3333, #ff0000);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #666666, #444444);
+        }
+
+        .btn-back:hover {
+            background: linear-gradient(135deg, #888888, #666666);
+        }
+
+        /* تأثيرات الجسيمات */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 0, 0, 0.3);
+            border-radius: 50%;
+            animation: float-particle 6s infinite linear;
+        }
+
+        @keyframes float-particle {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            .video-frame {
+                height: 300px;
+            }
+            
+            .message-container {
+                padding: 25px;
+            }
+            
+            .message-paragraph {
+                font-size: 16px;
+            }
+            
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-frame {
+                height: 250px;
+            }
+            
+            .header-icons {
+                font-size: 40px;
+            }
+            
+            .header-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- تأثير الجسيمات -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <!-- العنوان -->
+        <div class="header">
+            <div class="header-icons">🎂💫</div>
+            <div class="header-title">النهارده مش يوم عادي...</div>
+        </div>
+
+        <!-- الفيديو -->
+        <div class="video-container">
+            <iframe 
+                class="video-frame"
+                src="https://www.youtube.com/embed/wNut8QshEx0?autoplay=1&mute=0&controls=1&modestbranding=1&rel=0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- الرسالة -->
+        <div class="message-container">
+            <p class="message-paragraph">النهارده اليوم اللي اتولدت فيه الإنسانة اللي غيرت اتجاه حياتي بالكامل</p>
+            <p class="message-paragraph">من أول لحظة عرفتك فيها وأنا حاسس إن في حاجات كتير كانت ناقصاني واتكملت بيكي</p>
+            <p class="message-paragraph">ضحكتك كانت البداية وكلامك كان أول وعد بالراحة بعد تعب طويل</p>
+            <p class="message-paragraph">كل سنة وانتي طيبة يا أجمل حاجة حصلتلي من غير ما أكون مستنيها</p>
+            <p class="message-paragraph">يا صدفة عمرها ما كانت عادية يا روح ربنا كتبها ليا عشان أتعلم منها يعني إيه أمان</p>
+            <p class="message-paragraph">معاكي الأيام بتعدي بس مش بتتنسى واللحظات الصغيرة بتتحول لذكريات تعيش في القلب سنين</p>
+            <p class="message-paragraph">كل مرة بسمع صوتك فيها بحس إن الزمن واقف احتراما وتقديراً لهذا الجميييل ولروحك الاجمل</p>
+            <p class="message-paragraph">انتي مش بس حبيبتي انتي السبب اللي بيخليني اتأكد إن ربنا بيرزقنا باللي بيخلينا نحس إننا عايشين بجد</p>
+            <p class="message-paragraph">في يوم ميلادك أنا مش بقول كل سنة وانتي طيبة وبس<br>أنا بقول الحمد لله إنك اتولدتي والحمد لله أكتر إنك بقيت جزء من حياتي<br>يا رب تفضلي دايمًا بخير وضحكتك منورة الدنيا<br>وكل سنة وأنا أول واحد يقولك بحبك<br>لأنك ببساطة مش جزء من قلبي<br>انتي القلب كله <span class="heart">❤️</span></p>
+        </div>
+
+        <!-- الأزرار -->
+        <div class="buttons-container">
+            <a href="next.html" class="btn btn-back">⬅️ Back</a>
+            <a href="surprise.html" class="btn">Final Surprise 🎁</a>
+        </div>
+    </div>
+
+    <script>
+        // إنشاء الجسيمات
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            for (let i = 0; i < 12; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 6 + 3 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // بدء التشغيل
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+        });
+    </script>
+</body>
+  </html>
