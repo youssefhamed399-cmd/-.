@@ -116,7 +116,7 @@
         .birthday-image {
             max-width: 90%;
             max-height: 70vh;
-            border-radius: 20px;
+            border-radius: 15px;
             box-shadow: 0 0 50px rgba(255, 0, 0, 0.5);
             animation: imageGlow 2s ease-in-out infinite alternate;
         }
@@ -175,7 +175,8 @@
 
     <!-- شاشة الصورة -->
     <div class="image-screen" id="imageScreen">
-        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMDAwIi8+CiAgICA8dGV4dCB4PSIyMDAiIHk9IjE0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TbWlsZTwvdGV4dD4KICAgIDx0ZXh0IHg9IjIwMCIgeT0iMTgwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IiNmZmZmMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPml0J3MgeW91ciBiaXJ0aGRheSE8L3RleHQ+Cjwvc3ZnPg==" alt="Smile it's your birthday!" class="birthday-image">
+        <!-- الصورة الحقيقية -->
+        <img src="https://i.postimg.cc/QCcZfKht/168b12f3ba.jpg" alt="Smile it's your birthday!" class="birthday-image">
         <div class="countdown-text" id="imageCountdown">جاري الانتقال خلال 10 ثواني...</div>
     </div>
 
@@ -220,7 +221,7 @@
                     if (secondsLeft <= 0) {
                         clearInterval(timer);
                         // الانتقال للصفحة التالية
-                        window.location.href = "photos.html"; // غيرها للصفحة اللي بعديها
+                        window.location.href = "main.html"; // غيرها للصفحة اللي بعديها
                     }
                 }, 1000);
                 
