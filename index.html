@@ -154,18 +154,91 @@
             display: none;
         }
 
-        .success-message {
-            color: #00ff00;
-            margin-top: 15px;
-            font-size: 18px;
-            font-weight: bold;
+        /* رسالة الترحيب الجديدة - تحفة */
+        .welcome-container {
             display: none;
-            animation: glow 1.5s ease-in-out infinite alternate;
+            animation: welcomeEntrance 1.5s ease-out forwards;
         }
 
-        @keyframes glow {
-            from { text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00; }
-            to { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; }
+        .welcome-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: crownGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes crownGlow {
+            0% { 
+                transform: scale(1) rotate(0deg);
+                text-shadow: 0 0 10px gold, 0 0 20px orange;
+            }
+            50% { 
+                transform: scale(1.1) rotate(5deg);
+                text-shadow: 0 0 20px gold, 0 0 40px orange, 0 0 60px yellow;
+            }
+            100% { 
+                transform: scale(1) rotate(0deg);
+                text-shadow: 0 0 10px gold, 0 0 20px orange;
+            }
+        }
+
+        .welcome-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textShine 2s ease-in-out infinite;
+        }
+
+        @keyframes textShine {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        .welcome-subtitle {
+            color: #ffd700;
+            font-size: 18px;
+            margin-bottom: 15px;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .welcome-message {
+            color: #ffffff;
+            font-size: 16px;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .countdown {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-top: 20px;
+            font-weight: bold;
+            animation: fadeInUp 1s ease-out 1.5s both;
+        }
+
+        @keyframes welcomeEntrance {
+            0% { 
+                opacity: 0;
+                transform: translateY(50px) scale(0.8);
+            }
+            100% { 
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* تأثيرات الجسيمات */
@@ -196,7 +269,7 @@
     <div class="particles" id="particles"></div>
 
     <!-- القفل الرئيسي -->
-    <div class="lock-container">
+    <div class="lock-container" id="lockContainer">
         <div class="lock-icon">🔒</div>
         <h1>هدية عيد الميلاد الخاصة</h1>
         <p class="subtitle">أدخل كلمة المرور للدخول إلى المفاجأة</p>
@@ -209,8 +282,19 @@
         </form>
 
         <div class="error-message" id="errorMessage">كلمة المرور غير صحيحة!</div>
-        <div class="success-message" id="successMessage">Welcome my princess 👑</div>
         <p class="hint">اسأل صاحب الهدية عن كلمة المرور</p>
+    </div>
+
+    <!-- رسالة الترحيب الجديدة -->
+    <div class="welcome-container" id="welcomeContainer">
+        <div class="welcome-icon">👑</div>
+        <div class="welcome-title">Welcome My Princess</div>
+        <div class="welcome-subtitle">المفاجأة تنتظركِ يا أميرة!</div>
+        <div class="welcome-message">
+            كل عام وأنتِ بألف خير يا أجمل أميرة<br>
+            اشتقنا لرؤيتكِ تفتحين هديتكِ 🎀
+        </div>
+        <div class="countdown" id="countdown">جاري التحويل إلى المفاجأة...</div>
     </div>
 
     <script>
@@ -234,29 +318,34 @@
             e.preventDefault();
             const password = document.getElementById('password').value;
             const errorMessage = document.getElementById('errorMessage');
-            const successMessage = document.getElementById('successMessage');
+            const lockContainer = document.getElementById('lockContainer');
+            const welcomeContainer = document.getElementById('welcomeContainer');
+            const countdown = document.getElementById('countdown');
             
-            // كلمة المرور الجديدة
+            // كلمة المرور
             const correctPassword = "209";
             
             if (password === correctPassword) {
                 // كلمة المرور صحيحة - نظهر رسالة الترحيب
-                successMessage.style.display = 'block';
-                errorMessage.style.display = 'none';
+                lockContainer.style.display = 'none';
+                welcomeContainer.style.display = 'block';
                 
-                // نخفي الفورم بعد النجاح
-                document.getElementById('passwordForm').style.display = 'none';
-                document.querySelector('.subtitle').style.display = 'none';
-                document.querySelector('.hint').style.display = 'none';
+                // عد تنازلي للتحويل
+                let seconds = 3;
+                countdown.textContent = `جاري التحويل إلى المفاجأة خلال ${seconds} ثواني...`;
                 
-                // بعد 3 ثواني ننتقل للصفحة التانية
-                setTimeout(() => {
-                    window.location.href = "home.html";
-                }, 3000);
+                const countdownInterval = setInterval(() => {
+                    seconds--;
+                    if (seconds > 0) {
+                        countdown.textContent = `جاري التحويل إلى المفاجأة خلال ${seconds} ثواني...`;
+                    } else {
+                        clearInterval(countdownInterval);
+                        window.location.href = "home.html";
+                    }
+                }, 1000);
                 
             } else {
                 errorMessage.style.display = 'block';
-                successMessage.style.display = 'none';
                 setTimeout(() => {
                     errorMessage.style.display = 'none';
                 }, 3000);
