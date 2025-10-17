@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Timeless Story 💫</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* تأثيرات الخلفية */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 0, 0, 0.05) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        .container {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .title {
+            font-size: 28px;
+            margin-bottom: 40px;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .counter-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+
+        .time-unit {
+            background: rgba(20, 0, 0, 0.8);
+            padding: 25px 15px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .time-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #ff0000;
+            text-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+            margin-bottom: 10px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .time-label {
+            font-size: 14px;
+            color: #cccccc;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .message {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #ffffff;
+            margin-bottom: 40px;
+            padding: 0 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.5s forwards;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .heart {
+            color: #ff0000;
+            font-size: 24px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 2s forwards;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
+
+        .next-btn:hover {
+            background: linear-gradient(135deg, #ff3333, #ff0000);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* تأثيرات الجسيمات */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 0, 0, 0.3);
+            border-radius: 50%;
+            animation: float-particle 6s infinite linear;
+        }
+
+        @keyframes float-particle {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            .counter-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .time-number {
+                font-size: 36px;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+            
+            .message {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .counter-container {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .time-number {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- تأثير الجسيمات -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <h1 class="title">Our Journey Together <span class="heart">❤️</span></h1>
+        
+        <div class="counter-container">
+            <div class="time-unit">
+                <div class="time-number" id="days">000</div>
+                <div class="time-label">أيام</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-number" id="hours">00</div>
+                <div class="time-label">ساعات</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-number" id="minutes">00</div>
+                <div class="time-label">دقائق</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-number" id="seconds">00</div>
+                <div class="time-label">ثواني</div>
+            </div>
+        </div>
+
+        <div class="message">
+            ✨ Our time together isn't just memories — it's the story I'll keep forever
+        </div>
+
+        <a href="gallery.html" class="next-btn">الذكريات التالية 📸</a>
+    </div>
+
+    <script>
+        // تاريخ البداية - 1 مارس 2025
+        const startDate = new Date('2025-03-01T00:00:00').getTime();
+
+        function updateCounter() {
+            const now = new Date().getTime();
+            const distance = now - startDate;
+            
+            // الحسابات
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // تحديث الأرقام مع إضافة صفر للأرقام أقل من 10
+            document.getElementById('days').textContent = days.toString().padStart(3, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // إنشاء الجسيمات
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 8 + 4 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // بدء التشغيل
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            updateCounter();
+            // تحديث العد كل ثانية
+            setInterval(updateCounter, 1000);
+        });
+    </script>
+</body>
+  </html>
