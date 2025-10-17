@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الكنز الأخير - أغلى هدية 💝</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* تأثيرات الخلفية */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 0, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 0, 0, 0.1) 0%, transparent 50%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .treasure-title {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+            to { text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.6); }
+        }
+
+        .message-container {
+            background: rgba(10, 0, 0, 0.85);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(15px);
+            text-align: center;
+            line-height: 2;
+            margin-bottom: 30px;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .message-line {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: #ffffff;
+            opacity: 0;
+            transform: translateY(20px);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .message-line:nth-child(1) { animation: fadeInUp 1s ease-out 0.5s forwards; }
+        .message-line:nth-child(2) { animation: fadeInUp 1s ease-out 1s forwards; }
+        .message-line:nth-child(3) { animation: fadeInUp 1s ease-out 1.5s forwards; }
+        .message-line:nth-child(4) { animation: fadeInUp 1s ease-out 2s forwards; }
+        .message-line:nth-child(5) { animation: fadeInUp 1s ease-out 2.5s forwards; }
+        .message-line:nth-child(6) { animation: fadeInUp 1s ease-out 3s forwards; }
+        .message-line:nth-child(7) { animation: fadeInUp 1s ease-out 3.5s forwards; }
+        .message-line:nth-child(8) { animation: fadeInUp 1s ease-out 4s forwards; }
+        .message-line:nth-child(9) { animation: fadeInUp 1s ease-out 4.5s forwards; }
+        .message-line:nth-child(10) { animation: fadeInUp 1s ease-out 5s forwards; }
+        .message-line:nth-child(11) { animation: fadeInUp 1s ease-out 5.5s forwards; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .heart {
+            color: #ff0000;
+            font-size: 28px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .final-button {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #000000;
+            border: none;
+            padding: 18px 50px;
+            border-radius: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 6s forwards;
+            margin-top: 20px;
+        }
+
+        .final-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.7);
+        }
+
+        /* تأثيرات الجسيمات ذهبية */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, #ffd700, transparent);
+            border-radius: 50%;
+            animation: float-particle 8s infinite linear;
+        }
+
+        @keyframes float-particle {
+            0% { 
+                transform: translateY(100vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(80vh) rotate(36deg) scale(1);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(-100px) rotate(360deg) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .music-note {
+            position: absolute;
+            font-size: 24px;
+            color: #ffd700;
+            animation: floatNote 4s ease-in-out infinite;
+        }
+
+        @keyframes floatNote {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            50% { 
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            .message-line {
+                font-size: 18px;
+            }
+            
+            .treasure-title {
+                font-size: 28px;
+            }
+            
+            .message-container {
+                padding: 30px 20px;
+            }
+            
+            .final-button {
+                padding: 15px 40px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .message-line {
+                font-size: 16px;
+            }
+            
+            .treasure-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- تأثير الجسيمات الذهبية -->
+    <div class="particles" id="particles"></div>
+
+    <!-- علامات موسيقية -->
+    <div class="music-notes" id="musicNotes"></div>
+
+    <!-- الفيديو المخفي -->
+    <iframe 
+        style="display: none;" 
+        src="https://www.youtube.com/embed/ORrFJ63nlcA?autoplay=1&mute=0&controls=0&modestbranding=1&rel=0"
+        allow="autoplay; encrypted-media">
+    </iframe>
+
+    <div class="container">
+        <h1 class="treasure-title">🏆 الكنز الأخير 🏆</h1>
+        
+        <div class="message-container">
+            <div class="message-line">🌹✨</div>
+            <div class="message-line">وفي آخر الكلام</div>
+            <div class="message-line">يمكن مفيش حروف في الدنيا تكفي أوصف بيها إحساسي ناحيتك</div>
+            <div class="message-line">بس اللي أنا حاسه كل يوم بيأكدلي إن وجودك في حياتي مش صدفة</div>
+            <div class="message-line">ده قدر، مكتوب، وجاي في وقته عشان يغير كل حاجة كنت فاكر إنها انتهت</div>
+            <div class="message-line">إنتي مش مريتي على قلبي إنتي سكنتيه</div>
+            <div class="message-line">مش عديتي في حياتي إنتي بقيتي حياتي</div>
+            <div class="message-line">كل ضحكة منك كل نظرة، كل كلمة</div>
+            <div class="message-line">بتسيب أثر جوايا بيخليني أصدق إن مفيش حد يقدر ياخد مكانك مهما حصل</div>
+            <div class="message-line">انتي الدعوة اللي كنت بدعيها وأنا مش عارف أنا بستناها من مين</div>
+            <div class="message-line">وانتي السبب اللي بيخليني كل يوم أصحى وأنا لسه متأكد إن في خير في الدنيا</div>
+            <div class="message-line">يمكن الدنيا تتغير ويمكن الناس تمشي</div>
+            <div class="message-line">بس إنتي</div>
+            <div class="message-line">مش حد بيتنسي ولا إحساس بيتكرر</div>
+            <div class="message-line">إنتي الحكاية اللي بدأتها وأنا ناوي أكملها لآخر نفس فيا <span class="heart">❤️</span></div>
+        </div>
+
+        <button class="final-button" onclick="showFinalLove()">
+            بحبك 🌹
+        </button>
+    </div>
+
+    <script>
+        // إنشاء الجسيمات الذهبية
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            for (let i = 0; i < 25; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 15 + 5 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // إنشاء علامات موسيقية
+        function createMusicNotes() {
+            const notesContainer = document.getElementById('musicNotes');
+            const notes = ['🎵', '🎶', '🎼', '🎹', '🎻'];
+            
+            for (let i = 0; i < 12; i++) {
+                const note = document.createElement('div');
+                note.className = 'music-note';
+                note.textContent = notes[Math.floor(Math.random() * notes.length)];
+                note.style.left = Math.random() * 100 + 'vw';
+                note.style.animationDelay = Math.random() * 4 + 's';
+                note.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                notesContainer.appendChild(note);
+            }
+        }
+
+        // الرسالة النهائية
+        function showFinalLove() {
+            alert('🌹 كل يوم وانتِ أغلى حاجة في حياتي... وعدتك هفضل دايمًا جنبك 🥹❤️');
+        }
+
+        // بدء التشغيل
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            createMusicNotes();
+            
+            // تشغيل الأغنية تلقائياً
+            setTimeout(() => {
+                const iframe = document.querySelector('iframe');
+                iframe.style.display = 'block';
+            }, 1000);
+        });
+    </script>
+</body>
+      </html>
