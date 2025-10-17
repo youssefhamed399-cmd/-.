@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كل سنة وأنتِ طيبة 👑</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
+            position: relative;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        /* تأثيرات الخلفية */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 0, 0, 0.05) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .birthday-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.4);
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: imageAppear 1.5s ease-out 0.5s forwards;
+            border: 2px solid rgba(255, 0, 0, 0.3);
+        }
+
+        @keyframes imageAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .message-container {
+            background: rgba(20, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            animation: messageAppear 1s ease-out 1.5s forwards;
+        }
+
+        @keyframes messageAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-line {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 18px;
+            color: #ffffff;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .message-line:nth-child(1) { animation: fadeInUp 0.8s ease-out 2s forwards; }
+        .message-line:nth-child(2) { animation: fadeInUp 0.8s ease-out 2.3s forwards; }
+        .message-line:nth-child(3) { animation: fadeInUp 0.8s ease-out 2.6s forwards; }
+        .message-line:nth-child(4) { animation: fadeInUp 0.8s ease-out 2.9s forwards; }
+        .message-line:nth-child(5) { animation: fadeInUp 0.8s ease-out 3.2s forwards; }
+        .message-line:nth-child(6) { animation: fadeInUp 0.8s ease-out 3.5s forwards; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .heart {
+            color: #ff0000;
+            font-size: 24px;
+            margin: 0 5px;
+        }
+
+        .sparkle {
+            color: #ffd700;
+            font-size: 20px;
+            margin: 0 3px;
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            opacity: 0;
+            animation: buttonAppear 1s ease-out 4s forwards;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
+
+        @keyframes buttonAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .next-btn:hover {
+            background: linear-gradient(135deg, #ff3333, #ff0000);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* تأثيرات الجسيمات */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 0, 0, 0.3);
+            border-radius: 50%;
+            animation: float-particle 6s infinite linear;
+        }
+
+        @keyframes float-particle {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- تأثير الجسيمات -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <!-- الصورة -->
+        <img src="https://i.postimg.cc/jjW8tV9f/10101fe37c3d89a5fafe83ed0e13e7a1.jpg" 
+             alt="عيد ميلاد سعيد" 
+             class="birthday-image">
+
+        <!-- التهنئة -->
+        <div class="message-container">
+            <div class="message-line">كل سنة وانتي طيبة يا أغلى إنسانة في حياتي<span class="heart">❤️</span></div>
+            <div class="message-line">النهارده يوم ميلادك، واليوم ده بالنسبالي مش عادي أبدًا…</div>
+            <div class="message-line">لأنه اليوم اللي اتولدت فيه فرحتي <span class="heart">❤️</span></div>
+            <div class="message-line">يا رب تكون سنينك الجاية كلها حب وسعادة وراحة بال<span class="sparkle">💫</span></div>
+            <div class="message-line">وتفضلي دايمًا البسمة اللي بتنور أيامي <span class="sparkle">💫</span></div>
+        </div>
+
+        <!-- زرار الصفحة التالية -->
+        <a href="next.html" class="next-btn">المفاجأة التالية 🎁</a>
+    </div>
+
+    <script>
+        // إنشاء الجسيمات
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            for (let i = 0; i < 12; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 6 + 3 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // بدء التشغيل
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+        });
+    </script>
+</body>
+  </html>
