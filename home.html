@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيد ميلاد سعيد! 🎂</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #000000;
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* تأثيرات الخلفية */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 0, 0, 0.05) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        /* شاشة اللودنج */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .loading-content {
+            text-align: center;
+        }
+
+        .loading-dots {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #ff0000;
+            border-radius: 50%;
+            margin: 0 5px;
+            animation: dotPulse 1.5s infinite ease-in-out;
+        }
+
+        .dot:nth-child(2) { animation-delay: 0.2s; }
+        .dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes dotPulse {
+            0%, 100% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        .loading-text {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .loading-subtext {
+            color: #cccccc;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        /* شاشة الصورة */
+        .image-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 900;
+        }
+
+        .birthday-image {
+            max-width: 90%;
+            max-height: 70vh;
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.5);
+            animation: imageGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes imageGlow {
+            0% { box-shadow: 0 0 30px rgba(255, 0, 0, 0.5); }
+            100% { box-shadow: 0 0 60px rgba(255, 0, 0, 0.8); }
+        }
+
+        .countdown-text {
+            color: #ff0000;
+            font-size: 16px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* تأثيرات الجسيمات */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 0, 0, 0.3);
+            border-radius: 50%;
+            animation: float-particle 6s infinite linear;
+        }
+
+        @keyframes float-particle {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- تأثير الجسيمات -->
+    <div class="particles" id="particles"></div>
+
+    <!-- شاشة اللودنج -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="loading-text">Loading... Please Wait</div>
+            <div class="loading-subtext">جاري تحميل المفاجأة...</div>
+        </div>
+    </div>
+
+    <!-- شاشة الصورة -->
+    <div class="image-screen" id="imageScreen">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMDAwIi8+CiAgICA8dGV4dCB4PSIyMDAiIHk9IjE0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TbWlsZTwvdGV4dD4KICAgIDx0ZXh0IHg9IjIwMCIgeT0iMTgwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IiNmZmZmMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPml0J3MgeW91ciBiaXJ0aGRheSE8L3RleHQ+Cjwvc3ZnPg==" alt="Smile it's your birthday!" class="birthday-image">
+        <div class="countdown-text" id="imageCountdown">جاري الانتقال خلال 10 ثواني...</div>
+    </div>
+
+    <script>
+        // إنشاء الجسيمات
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 8 + 4 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // التحكم في التوقيت
+        let timer;
+        let secondsLeft = 10;
+
+        function startSequence() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            const imageScreen = document.getElementById('imageScreen');
+            const imageCountdown = document.getElementById('imageCountdown');
+
+            // المرحلة 1: اللودنج لمدة 5 ثواني
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+                imageScreen.style.display = 'flex';
+                
+                // المرحلة 2: الصورة لمدة 10 ثواني مع عد تنازلي
+                secondsLeft = 10;
+                updateCountdown();
+                
+                timer = setInterval(() => {
+                    secondsLeft--;
+                    updateCountdown();
+                    
+                    if (secondsLeft <= 0) {
+                        clearInterval(timer);
+                        // الانتقال للصفحة التالية
+                        window.location.href = "photos.html"; // غيرها للصفحة اللي بعديها
+                    }
+                }, 1000);
+                
+            }, 5000); // 5 ثواني لودنج
+        }
+
+        function updateCountdown() {
+            const imageCountdown = document.getElementById('imageCountdown');
+            imageCountdown.textContent = `جاري الانتقال خلال ${secondsLeft} ثواني...`;
+        }
+
+        // بدء التشغيل
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            startSequence();
+        });
+    </script>
+</body>
+</html>
