@@ -154,6 +154,20 @@
             display: none;
         }
 
+        .success-message {
+            color: #00ff00;
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            display: none;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00; }
+            to { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; }
+        }
+
         /* تأثيرات الجسيمات */
         .particles {
             position: absolute;
@@ -195,6 +209,7 @@
         </form>
 
         <div class="error-message" id="errorMessage">كلمة المرور غير صحيحة!</div>
+        <div class="success-message" id="successMessage">Welcome my princess 👑</div>
         <p class="hint">اسأل صاحب الهدية عن كلمة المرور</p>
     </div>
 
@@ -219,13 +234,29 @@
             e.preventDefault();
             const password = document.getElementById('password').value;
             const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
             
-            // هنا تحط كلمة المرور اللي انت عاوزها
-            const correctPassword = "209"; // غيرها لأي كلمة تانية
+            // كلمة المرور الجديدة
+            const correctPassword = "209";
             
-                // window.location.href = "page2.html"; // فلتغير ده للصفحة التانية
+            if (password === correctPassword) {
+                // كلمة المرور صحيحة - نظهر رسالة الترحيب
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+                
+                // نخفي الفورم بعد النجاح
+                document.getElementById('passwordForm').style.display = 'none';
+                document.querySelector('.subtitle').style.display = 'none';
+                document.querySelector('.hint').style.display = 'none';
+                
+                // بعد 3 ثواني ننتقل للصفحة التانية
+                setTimeout(() => {
+                    window.location.href = "home.html";
+                }, 3000);
+                
             } else {
                 errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
                 setTimeout(() => {
                     errorMessage.style.display = 'none';
                 }, 3000);
@@ -236,4 +267,4 @@
         createParticles();
     </script>
 </body>
-</html>
+    </html>
